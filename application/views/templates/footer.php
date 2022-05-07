@@ -1,3 +1,52 @@
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase.js"></script>
+     <script src = "https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js"></script>   
+        <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-app.js";
+  // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-auth.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyC4ZWnL7fgxMe4PiX-ihjTXSB0QmVlqA-w",
+    authDomain: "qubeassignment-77e6a.firebaseapp.com",
+    projectId: "qubeassignment-77e6a",
+    storageBucket: "qubeassignment-77e6a.appspot.com",
+    messagingSenderId: "879700951575",
+    appId: "1:879700951575:web:f09660dc1988f38f1c5252",
+    measurementId: "G-3X55EZC1EV"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+     firebase.analytics();
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
+
+<script src="<?= base_url("assets/js/jsscript.js"); ?>"></script>
+<script>
+  function codeverify() {
+    var code = document.getElementById('verificationCode').value;
+
+    coderesult = window.confirmationResult
+    coderesult.confirm(code).then(function(result) {
+        alert("Successfully registered");
+        var user = result.user;
+        console.log(result);
+        console.log(user);
+        window.location.href = "<?php echo base_url("pages/master_home"); ?>";
+    }).catch(function(error) {
+        alert(error.message);
+        window.location.href = "<?php echo base_url(); ?>";
+    });
+}
+</script>
+
 <footer class="text-center text-white fixed-bottom" style="background-color: #e3f2fd;">
   <!-- Grid container -->
   <div class="container pt-1">
