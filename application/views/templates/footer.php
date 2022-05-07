@@ -20,7 +20,7 @@
         ><i class="bi-github" role="img" aria-label="GitHub"></i></a>
         <a
         class="btn btn-link btn-floating btn-lg text-dark m-1"
-        href="#!"
+        href="https://github.com/Sahil-Chavan/Qube_Health_Assignment"
         role="button"
         data-mdb-ripple-color="dark"
         ><i class="bi bi-link-45deg"></i></a>

@@ -1,54 +1,3 @@
-<!-- <title></title>
-<style>
-    .divider:after,
-.divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;}
-
-li.nav-item{
-    padding:3rem;
-}
-
-</style>
-</head>
-<body class="min-vh-100">
-
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; height:20vh;">
-  <div class="container-fluid">
-  <span class="navbar-brand mb-0 fs-1">Qube Health Assignment Project</span>
-    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-    
-    <div class="collapse navbar-collapse flex-grow-0" id="navbarNav" style="padding:6rem;">
-      <ul class="navbar-nav text-right">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="<?php echo base_url() ?>">Master Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url() ?>/userlogin">User Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url() ?>/about">About</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav> -->
-<!-- <nav class="navbar navbar-light" style="background-color: #e3f2fd; height:20vh;"> -->
-
-
-<!-- <div class="container-fluid justify-content-center"> -->
-    <!-- <span class="navbar-brand mb-0 fs-1">Qube Health Assignment Project</span>  -->
-
-    <!-- <span class="align-bottom" style="height:100%;">By - Sahil S Chavan</span> -->
-    <!-- By - Sahil S Chavan -->
-  <!-- </div> -->
-  
-    
-
-<!-- <div class="min-vh-100"> -->
-    <!-- Column 1 -->
   <div class="container py-5 h-100">
     <div class="row d-flex align-items-center justify-content-center h-100">
       <div class="col-md-8 col-lg-7 col-xl-6">
@@ -58,15 +7,15 @@ li.nav-item{
 
       <!-- Column 2 -->
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-          <dix class="row align-items-center" style="padding-top:10rem;">
+          <div class="row align-items-center" style="padding-top:10rem;">
 
-      <div class="container-fluid justify-content-center">
+      <div class="container-fluid justify-content-center mb-3">
           <h1 class="text-center">Master Login</h1>
             </div>
         <form>
           
           <div class="form-outline mb-4">
-            <input type="email" id="form1Example13" class="form-control form-control-lg" />
+            <input type="email" id="form1Example13" class="form-control form-control-lg m-2 p-2" />
             <label class="form-label" for="form1Example13">Phone Number</label>
           </div>
 
@@ -104,7 +53,7 @@ li.nav-item{
 
         </form>
 
-        </dix>
+        </div>
       </div>
     </div>
   </div>

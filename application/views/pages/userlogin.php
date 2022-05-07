@@ -22,15 +22,15 @@
 
       <!-- Column 2 -->
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-          <dix class="row align-items-center" style="padding-top:10rem;">
+          <div class="row align-items-center" style="padding-top:10rem;">
 
-      <div class="container-fluid justify-content-center">
+      <div class="container-fluid justify-content-center mb-3">
           <h1 class="text-center">User Login</h1>
             </div>
         <form>
           
           <div class="form-outline mb-4">
-            <input type="email" id="form1Example13" class="form-control form-control-lg" />
+            <input type="email" id="form1Example13" class="form-control form-control-lg m-2 p-2" />
             <label class="form-label" for="form1Example13">Phone Number</label>
           </div>
 
@@ -68,7 +68,7 @@
 
         </form>
 
-        </dix>
+        </div>
       </div>
     </div>
   </div>
