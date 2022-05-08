@@ -29,23 +29,7 @@
 </script>
 
 <script src="<?= base_url("assets/js/jsscript.js"); ?>"></script>
-<script>
-  function codeverify() {
-    var code = document.getElementById('verificationCode').value;
 
-    coderesult = window.confirmationResult
-    coderesult.confirm(code).then(function(result) {
-        alert("Successfully registered");
-        var user = result.user;
-        console.log(result);
-        console.log(user);
-        window.location.href = "<?php echo base_url("pages/master_home"); ?>";
-    }).catch(function(error) {
-        alert(error.message);
-        window.location.href = "<?php echo base_url(); ?>";
-    });
-}
-</script>
 
 <footer class="text-center text-white fixed-bottom" style="background-color: #e3f2fd;">
   <!-- Grid container -->

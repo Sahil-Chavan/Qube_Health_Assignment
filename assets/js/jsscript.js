@@ -41,37 +41,85 @@ function phoneAuth(){
     });
 }
 
-function codeverify() {
+// function codeverify() {
+//     var code = document.getElementById('verificationCode').value;
+
+//     coderesult = window.confirmationResult
+//     coderesult.confirm(code).then(function(result) {
+//         alert("Successfully registered");
+//         var user = result.user;
+//         console.log(result);
+//         console.log(user);
+//         window.location.href = "<?php echo base_url('pages/master_home'); ?>";
+//     }).catch(function(error) {
+//         alert(error.message);
+//         window.location.href = "<?php echo base_url(); ?>";
+//     });
+// }
+
+function ajax_master(){
+    var phoneno = document.getElementById('phoneno').value;
+    $.ajax({
+        url:"http://localhost/Qube_Health_Assignment/pages/master_session",
+        type: 'post',
+        // dataType: "json",
+        data: { 'phoneno': phoneno },
+        success: function (res) {
+          if(res.status == "success"){
+            window.location.href = res.redirect_url;
+          }
+        },
+        error: function (xhr, status, error) {
+            alert('Error Please Try Again');
+            window.location.href = "http://localhost/Qube_Health_Assignment";
+            
+        }
+    }); 
+}
+
+  function codeverify() {
     var code = document.getElementById('verificationCode').value;
 
     coderesult = window.confirmationResult
     coderesult.confirm(code).then(function(result) {
         alert("Successfully registered");
-        var user = result.user;
-        console.log(result);
-        console.log(user);
-        window.location.href = "<?php echo base_url('pages/master_home'); ?>";
+        ajax_master()
     }).catch(function(error) {
         alert(error.message);
-        window.location.href = "<?php echo base_url(); ?>";
+        window.location.href = "http://localhost/Qube_Health_Assignment";
     });
 }
 
-function ajax_master(){
+
+function ajax_user(){
     var phoneno = document.getElementById('phoneno').value;
     $.ajax({
-        type: 'GET',
-        url: Url.Action("ActionMethod", "MyController"),
-        data: {
-            param1: DD1Value,
-            param2: DD2Value,
-            param3: xyz
+        url:"http://localhost/Qube_Health_Assignment/pages/user_session",
+        type: 'post',
+        // dataType: "json",
+        data: { 'phoneno': phoneno },
+        success: function (res) {
+          if(res.status == "success"){
+            window.location.href = res.redirect_url;
+          }
         },
-        success: function (data) {
-            window.location.href = data.redirecturl;
-        },
-        error: function () {
-            alert('error happened');
+        error: function (xhr, status, error) {
+            alert('Error Please Try Again');
+            window.location.href = "http://localhost/Qube_Health_Assignment";
+            
         }
     }); 
+}
+
+  function codeverify_user() {
+    var code = document.getElementById('verificationCode').value;
+
+    coderesult = window.confirmationResult
+    coderesult.confirm(code).then(function(result) {
+        alert("Successfully registered");
+        ajax_user()
+    }).catch(function(error) {
+        alert(error.message);
+        window.location.href = "http://localhost/Qube_Health_Assignment";
+    });
 }

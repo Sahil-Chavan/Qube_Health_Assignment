@@ -31,7 +31,7 @@ input.form-control-lg{
   <div class="container-fluid">
   <span class="navbar-brand mb-0 fs-1" style="padding-left:7rem; font-weight: 500; "><?= $phoneno ?></span>
   <br>
-  <span class="navbar-brand mb-0 fs-1" style="padding-left:7rem; display:block;">Welcome to Master Dashboard</span>
+  <span class="navbar-brand mb-0 fs-1" style="padding-left:7rem; display:block;">Welcome to User Dashboard</span>
     <!-- <a class="navbar-brand" href="#">Navbar</a> -->
     
     <div class="collapse navbar-collapse flex-grow-0" id="navbarNav" style="padding:6rem;">
@@ -48,33 +48,65 @@ input.form-control-lg{
 
 <!-- ---------------------------------------------------------------------------- -->
 <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="col-md-6 col-lg-5 col-xl-4">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.svg"
-          class="img-fluid" alt="Phone image">
+    <div class="row d-flex  h-100">
+      <!-- <div class="col-md-6 col-lg-5 col-xl-4"> -->
+      <div class="col-md-5 col-lg-6 col-xl-5">
+
+      <div class="container-fluid">
+          <h2 class="text-center">Previously Uploaded Documents</h2>
+            </div>
+
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Sr. No.</th>
+                <th scope="col">Files</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <?php 
+            $lst_len = count($files);
+            for ($n = 0; $n < $lst_len; $n++) { 
+                ?>
+                <tr>
+                <th scope="row"><?php echo $n+1; ?></th>
+                <td><a href="<?=base_url('pages/viewpdf/'.$files[$n])?>"> <?php echo $files[$n] ?></a></td>
+                </tr>
+                <?php } ?>
+
+            </tbody>
+            </table>
       </div>
 
       <!-- Column 2 -->
-      <div class="col-md-6 col-lg-7 col-xl-7 offset-xl-1">
+      <!-- <div class="col-md-6 col-lg-7 col-xl-7 offset-xl-1"> -->
+      <div class="col-md-7 col-lg-6 col-xl-6 offset-xl-1">
           <div class="row align-items-center" style="padding-top:1rem;">
 
       <div class="container-fluid justify-content-center mb-3">
-          <h1 class="text-center">Register New User</h1>
+          <h1 class="text-center">Upload New Document</h1>
             </div>
 
-            <?php echo form_open('pages/master_newuser',array('onSubmit'=>"codeverify()"))?>
+            <?php echo form_open_multipart('pages/user_upload');?>
               <div class="form-group row">
-                <label for="form-control-lg" class="fs-3">User's Name</label>
-                <input type="text" class="form-control-lg" id="uname" name="uname" placeholder="Please enter your name here.">
+                <label for="form-control-lg" class="fs-3">Document Name</label>
+                <input type="text" pattern="^[a-zA-Z0-9]+$" class="form-control-lg" id="docdet" name="docdet" placeholder="Do not use any kind of special characters." required>
               </div>
               <div class="form-group row">
-                <label for="form-control-lg" class="fs-3">User's Contact Number</label>
-                <input type="tel" minlength="10" maxlength="10" class="form-control-lg" id="ucontact" name="ucontact" placeholder="Enter the contact number for registration">
+                <label for="form-control-lg" class="fs-3">Select the document to upload</label>
+                
+                    <!-- file upload -->
+                    <div class="mb-3">
+                    <!-- <label for="formFile" class="form-label">Default file input example</label> -->
+                    <input class="form-control mt-4 " name="docupload" type="file" id="docupload" required>
+                    </div>
+                        
               </div>
 
           
           <div class="d-flex justify-content-around align-items-center mb-4">
-          <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block mt-4" ><span class="fs-4">Insert Data</span></button>
+          <button type="submit" name="submit" class="btn btn-primary btn-lg btn-block mt-4" ><span class="fs-4">Upload File</span></button>
             </div>
         </form>
 

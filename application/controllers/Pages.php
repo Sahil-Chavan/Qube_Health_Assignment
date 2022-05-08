@@ -1,6 +1,8 @@
 <?php
 
-    class Pages extends CI_Controller{
+defined('BASEPATH') OR exit('No direct script access allowed');    
+
+class Pages extends CI_Controller{
         public function view($page = 'home'){
             if(!file_exists(APPPATH.'views/pages/'.$page.'.php')){
                 show_404();
@@ -11,30 +13,42 @@
             // }
 
             $data['title'] = ucfirst($page);
-            // $data['posts'] = $this->user_data->get_post(8104557876);
-            // print_r($data['posts']);
-            
             $this->load->view('templates/header');
             $this->load->view('pages/'.$page,$data);
             $this->load->view('templates/footer');
         }
 
-        // public function master_login(){
-        //     $data['phoneno'] = $this->input->post('phoneno');
-        //     // print_r($data);
-        //     $this->load->view('templates/header');
-        //     $this->load->view('pages/master_otp',$data);
-        //     $this->load->view('templates/footer');
+        public function master_session(){
+            
+            if (!$this->input->is_ajax_request()) {
+                echo 'No direct script is allowed';
+                die;
+            }
+            $phoneno = $this->input->post('phoneno');
+            $this->load->library('session');
+            $this->session->set_userdata('phoneno',$phoneno);
+            $result['status'] = 'success';
+            $result['message'] = 'Yeah! You have successfully logged in.';
+            $result['redirect_url'] = base_url('pages/master_home');
 
-        // }
-        public function master_home(){
-            // $data['phoneno'] = $this->input->post('phoneno');
-            // print_r($data);
-            // $this->load->view('templates/header');
-            $this->load->view('pages/master_home');
-            // $this->load->view('templates/footer');
+            $this->output->set_content_type('application/json');
+            $this->output->set_output(json_encode($result));
+            $string = $this->output->get_output();
+
 
         }
+
+        public function master_home(){
+            $this->load->library('session');
+            if(isset($_SESSION['phoneno'])){
+            $data['phoneno'] = $this->session->userdata('phoneno');
+            $this->load->view('pages/master_home',$data);
+            }else{
+                echo "<script>alert('Not an correct way to come in. Please login first')</script>";
+                redirect('home', 'refresh');
+            }
+        }
+    
 
         public function master_newuser(){
 
@@ -71,7 +85,103 @@
             // $this->db->db_debug = $db_debug;
         }
         }
+        
+        public function master_logout(){
+            $this->load->library('session');
+            echo('hi');
+            $this->session->unset_userdata('phoneno');
+            $this->session->sess_destroy();
+            echo "<script>alert('Are you sure you want to logout?')</script>";
+            redirect('home', 'refresh');
+        }
+        
+        public function user_session(){
+            if (!$this->input->is_ajax_request()) {
+                echo 'No direct script is allowed';
+                die;
+            }
+            $phoneno = $this->input->post('phoneno');
+            $this->load->library('session');
+            $this->session->set_userdata('phoneno',$phoneno);
+            $result['status'] = 'success';
+            $result['message'] = 'Yeah! You have successfully logged in.';
+            $result['redirect_url'] = base_url('pages/user_home');
 
-    }
+            $this->output->set_content_type('application/json');
+            $this->output->set_output(json_encode($result));
+            $string = $this->output->get_output();
+        }
 
+        public function user_home(){
+            $this->load->library('session');
+            if(isset($_SESSION['phoneno'])){
+            $data['phoneno'] = $this->session->userdata('phoneno');
+                
+            // retrive document details
+            $this->load->helper('directory');
+            $map = directory_map('./user_data/'.$data['phoneno'], 1);
+            // print_r($map);
+            $data['files'] = $map;
+
+            $this->load->view('pages/user_home',$data);
+            }else{
+                echo "<script>alert('Not an correct way to come in. Please login first')</script>";
+                redirect('home', 'refresh');}
+        }
+
+        public function user_upload(){
+            
+                $this->load->library('session');
+                $phoneno = $this->session->userdata('phoneno');
+                $file_name = $this->input->post('docdet');
+                $target_dir="./user_data/".$phoneno."/";
+                if(!file_exists($target_dir)){
+                    mkdir($target_dir,0777);
+                }
+                $config['upload_path'] = $target_dir;
+                $config['file_name'] = $file_name;
+                $config['allowed_types'] = 'pdf';
+                $config['max_size'] = 10000;
+                // $config['max_width'] = 1500;
+                // $config['max_height'] = 1500;
+        
+                $this->load->library('upload', $config);
+        
+                if (!$this->upload->do_upload('docupload')) {
+                    $error = array('error' => $this->upload->display_errors());
+                    echo "<script>alert('Unable to upload the file. ".strip_tags($this->upload->display_errors())."')</script>";
+                    redirect('pages/user_home', 'refresh');
+                } else {
+                    echo "<script>alert('Document Succeffully Uploaded')</script>";
+                    redirect('pages/user_home', 'refresh');
+                    // $data = array('image_metadata' => $this->upload->data());
+        
+                    // $this->load->view('files/upload_result', $data);
+                }
+            }
+
+            public function viewpdf($filename){
+                $this->load->library('session');
+                $phoneno = $this->session->userdata('phoneno');
+                $path = 'user_data/'.$phoneno.'/'.$filename;
+        
+                header('Content-Length: '.filesize($path));
+                header("Content-type: application/pdf");
+                header("Content-disposition: inline; filename=$filename");
+                readfile($path);
+
+                // header("Content-Length: " . filesize ($path) ); 
+                // header("Content-type: application/pdf"); 
+                // header("Content-disposition: inline; filename=$filename");
+                // header('Expires: 0');
+                // header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+                // $filepath = readfile($path);
+
+            }
+
+        }
+
+        
+        
+    
 ?>
