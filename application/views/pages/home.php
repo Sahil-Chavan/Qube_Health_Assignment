@@ -17,7 +17,7 @@
         ?>
         <div id="master_log">
           <div class="form-outline mb-4">
-            <input type="tel" minlength="10" maxlength="10" id='phoneno' name='phoneno' placeholder='9876543210' class="form-control form-control-lg m-2 p-2" required />
+            <input type="tel" minlength="10" maxlength="10" id='phoneno' name='phoneno' placeholder='Enter 10 digit contact number.' class="form-control form-control-lg m-2 p-2" required />
             <label class="form-label" for="form1Example13">Phone Number</label>
             <div id="recaptcha-container"></div>
           </div>
@@ -33,7 +33,7 @@
           <?php #echo form_open('pages/master_home',array('onSubmit'=>"codeverify()"))
           ?>
           <div class="form-outline mb-3">
-            <input type="number" id="verificationCode" name="verificationCode" placeholder="Please enter the OTP" class="form-control form-control-lg m-2 p-2" />
+            <input type="tel" minlength="6" maxlength="6" id="verificationCode" name="verificationCode" placeholder="Please enter the 6 digit OTP" class="form-control form-control-lg m-2 p-2" />
             <label class="form-label" for="form1Example13">The OTP has been sent to registered contact number.</label>
           </div>
 

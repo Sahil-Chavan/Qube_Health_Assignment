@@ -187,6 +187,24 @@ class Pages extends CI_Controller{
                 readfile($path);
             }
 
+            public function deletepdf($filename){
+                $this->load->library('session');
+                $phoneno = $this->session->userdata('phoneno');
+                $path = 'user_data/'.$phoneno.'/'.$filename;
+
+                $this->load->helper("file");
+                // delete_files($path);
+                if(unlink($path)) {
+                    echo "<script>alert('Document Succeffully Deleted')</script>";
+                redirect('pages/user_home', 'refresh');
+               }
+               else {
+                echo "<script>alert('Unable to delete document')</script>";
+                redirect('pages/user_home', 'refresh');
+               }
+                
+            }
+
             public function user_logout(){
                 $this->load->library('session');
                 $this->session->unset_userdata('phoneno');

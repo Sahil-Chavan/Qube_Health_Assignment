@@ -26,7 +26,7 @@
         </div>
         <div id="master_otp" style="display:none;">
           <div class="form-outline mb-3">
-            <input type="number" id="verificationCode" name="verificationCode" placeholder="Please enter the OTP" class="form-control form-control-lg m-2 p-2" />
+            <input type="tel" minlength="6" maxlength="6" id="verificationCode" name="verificationCode" placeholder="Please enter the 6 digit OTP" class="form-control form-control-lg m-2 p-2" />
             <label class="form-label" for="form1Example13">The OTP has been sent to registered contact number.</label>
           </div>
 

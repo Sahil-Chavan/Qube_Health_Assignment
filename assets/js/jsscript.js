@@ -33,8 +33,8 @@ function preauth(){
 function phoneAuth(){
     
     var phoneno = document.getElementById('phoneno').value;
-    if (phoneno==''){
-        alert("Please enter phone number");
+    if (phoneno=='' || phoneno.toString().length != 10){
+        alert("Please enter valid phone number");
         return false;}
     phoneno = '+91'+phoneno;
 
