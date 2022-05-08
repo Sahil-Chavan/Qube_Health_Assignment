@@ -19,6 +19,7 @@ li.nav-item{
 }
 
 </style>
+<script type="text/javascript"src="code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <body class="min-vh-100">
 

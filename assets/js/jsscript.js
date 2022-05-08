@@ -41,3 +41,37 @@ function phoneAuth(){
     });
 }
 
+function codeverify() {
+    var code = document.getElementById('verificationCode').value;
+
+    coderesult = window.confirmationResult
+    coderesult.confirm(code).then(function(result) {
+        alert("Successfully registered");
+        var user = result.user;
+        console.log(result);
+        console.log(user);
+        window.location.href = "<?php echo base_url('pages/master_home'); ?>";
+    }).catch(function(error) {
+        alert(error.message);
+        window.location.href = "<?php echo base_url(); ?>";
+    });
+}
+
+function ajax_master(){
+    var phoneno = document.getElementById('phoneno').value;
+    $.ajax({
+        type: 'GET',
+        url: Url.Action("ActionMethod", "MyController"),
+        data: {
+            param1: DD1Value,
+            param2: DD2Value,
+            param3: xyz
+        },
+        success: function (data) {
+            window.location.href = data.redirecturl;
+        },
+        error: function () {
+            alert('error happened');
+        }
+    }); 
+}

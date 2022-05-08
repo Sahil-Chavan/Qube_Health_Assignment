@@ -13,6 +13,19 @@ class User_data extends CI_Model{
         $query = $this->db->get_where('user',array('userno'=>$userno));
         return $query->row_array();
     }
+
+    public function user_exists($usern)
+        {
+        // $this->db->where('userno',$usern);
+        // $query = $this->db->get('roles');
+        $query = $this->db->get_where('user',array('userno'=>$usern));
+        if ($query->num_rows() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
 
 
