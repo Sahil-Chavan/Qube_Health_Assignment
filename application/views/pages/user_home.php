@@ -32,7 +32,8 @@
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; height:20vh;">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 fs-1" style="padding-left:7rem; font-weight: 500; "><?= $phoneno ?></span>
+        <span class="navbar-brand mb-0 fs-1" style="padding-left:7rem; font-weight: 500; ">Hi <?= $username ?> ,</span>
+            <span class="navbar-brand mb-0" style=" font-weight: 300; "> Contact No. : <?= $phoneno ?></span>
             <br>
             <span class="navbar-brand mb-0 fs-1" style="padding-left:7rem; display:block;">Welcome to User Dashboard</span>
     

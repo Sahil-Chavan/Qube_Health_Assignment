@@ -138,7 +138,8 @@ class Pages extends CI_Controller{
             $this->load->library('session');
             if(isset($_SESSION['phoneno'])){
             $data['phoneno'] = $this->session->userdata('phoneno');
-                
+            $res = $this->user_data->get_user($data['phoneno']);
+            $data['username'] = $res[0]['username'];
             $this->load->helper('directory');
             $map = directory_map('./user_data/'.$data['phoneno'], 1);
             $data['files'] = $map;

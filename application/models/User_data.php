@@ -5,13 +5,10 @@ class User_data extends CI_Model{
         $this->load->database();
     }
 
-    public function get_post($userno=FALSE){
-        if($userno=== FALSE){
-            $query = $this->db->get('user');
-            return $query->result_array();
-        }
+    public function get_user($userno){
+       
         $query = $this->db->get_where('user',array('userno'=>$userno));
-        return $query->row_array();
+        return $query->result_array();
     }
 
     public function user_exists($usern)
