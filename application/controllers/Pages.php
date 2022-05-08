@@ -7,11 +7,6 @@ class Pages extends CI_Controller{
             if(!file_exists(APPPATH.'views/pages/'.$page.'.php')){
                 show_404();
             }
-            // if($page=='home'){
-            //     $this->load->view('pages/'.$page);
-            //     return;
-            // }
-
             $data['title'] = ucfirst($page);
             $this->load->view('templates/header');
             $this->load->view('pages/'.$page,$data);
@@ -95,17 +90,44 @@ class Pages extends CI_Controller{
             redirect('home', 'refresh');
         }
         
+        public function check_user(){
+            if(!$this->input->is_ajax_request()){
+                echo 'No direct script is allowed';
+                die;
+            }
+            $phoneno = $this->input->post('phoneno');
+            if($this->user_data->user_exists($phoneno)){
+                $result['status'] = 'success';
+                $result['message'] = 'User exists';
+                
+            }else{
+                $result['status'] = 'failure';
+                $result['message'] = 'User does not exist';
+            }
+
+            $this->output->set_content_type('application/json');
+            $this->output->set_output(json_encode($result));
+            $string = $this->output->get_output();
+        }
+
+
         public function user_session(){
             if (!$this->input->is_ajax_request()) {
                 echo 'No direct script is allowed';
                 die;
             }
+
             $phoneno = $this->input->post('phoneno');
             $this->load->library('session');
             $this->session->set_userdata('phoneno',$phoneno);
             $result['status'] = 'success';
             $result['message'] = 'Yeah! You have successfully logged in.';
             $result['redirect_url'] = base_url('pages/user_home');
+
+            $target_dir="./user_data/".$phoneno."/";
+            if(!file_exists($target_dir)){
+                mkdir($target_dir,0777);
+            }
 
             $this->output->set_content_type('application/json');
             $this->output->set_output(json_encode($result));
@@ -117,10 +139,8 @@ class Pages extends CI_Controller{
             if(isset($_SESSION['phoneno'])){
             $data['phoneno'] = $this->session->userdata('phoneno');
                 
-            // retrive document details
             $this->load->helper('directory');
             $map = directory_map('./user_data/'.$data['phoneno'], 1);
-            // print_r($map);
             $data['files'] = $map;
 
             $this->load->view('pages/user_home',$data);
@@ -142,8 +162,6 @@ class Pages extends CI_Controller{
                 $config['file_name'] = $file_name;
                 $config['allowed_types'] = 'pdf';
                 $config['max_size'] = 10000;
-                // $config['max_width'] = 1500;
-                // $config['max_height'] = 1500;
         
                 $this->load->library('upload', $config);
         
@@ -154,9 +172,6 @@ class Pages extends CI_Controller{
                 } else {
                     echo "<script>alert('Document Succeffully Uploaded')</script>";
                     redirect('pages/user_home', 'refresh');
-                    // $data = array('image_metadata' => $this->upload->data());
-        
-                    // $this->load->view('files/upload_result', $data);
                 }
             }
 
@@ -169,15 +184,16 @@ class Pages extends CI_Controller{
                 header("Content-type: application/pdf");
                 header("Content-disposition: inline; filename=$filename");
                 readfile($path);
-
-                // header("Content-Length: " . filesize ($path) ); 
-                // header("Content-type: application/pdf"); 
-                // header("Content-disposition: inline; filename=$filename");
-                // header('Expires: 0');
-                // header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-                // $filepath = readfile($path);
-
             }
+
+            public function user_logout(){
+                $this->load->library('session');
+                $this->session->unset_userdata('phoneno');
+                $this->session->sess_destroy();
+                echo "<script>alert('Are you sure you want to logout?')</script>";
+                redirect('userlogin', 'refresh');
+            }
+
 
         }
 
