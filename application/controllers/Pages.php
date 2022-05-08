@@ -83,7 +83,6 @@ class Pages extends CI_Controller{
         
         public function master_logout(){
             $this->load->library('session');
-            echo('hi');
             $this->session->unset_userdata('phoneno');
             $this->session->sess_destroy();
             echo "<script>alert('Are you sure you want to logout?')</script>";
@@ -161,8 +160,11 @@ class Pages extends CI_Controller{
                 }
                 $config['upload_path'] = $target_dir;
                 $config['file_name'] = $file_name;
-                $config['allowed_types'] = 'pdf';
-                $config['max_size'] = 10000;
+                // $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
+                $config['allowed_types'] = 'gif|jpg|jpeg|png|iso|dmg|zip|rar|doc|docx|xls|xlsx|ppt|pptx|csv|ods|odt|odp|pdf|rtf|sxc|sxi|txt|exe|avi|mpeg|mp3|mp4|3gp';
+                $config['max_size'] = 2048000;
+                $config['max_width'] = 2048;
+                $config['max_height'] = 2048;
         
                 $this->load->library('upload', $config);
         
@@ -180,11 +182,56 @@ class Pages extends CI_Controller{
                 $this->load->library('session');
                 $phoneno = $this->session->userdata('phoneno');
                 $path = 'user_data/'.$phoneno.'/'.$filename;
-        
-                header('Content-Length: '.filesize($path));
-                header("Content-type: application/pdf");
-                header("Content-disposition: inline; filename=$filename");
-                readfile($path);
+
+                $parts = explode('.',$filename);
+                $ext = end($parts);
+
+                if($ext=='pdf'){
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: application/pdf");
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);}
+                elseif ($ext=='jpg' || $ext=='jpeg' || $ext=='png' || $ext=='gif') {
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: image/".$ext);
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);
+                }elseif ($ext=='doc' || $ext=='docx') {
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: application/msword");
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);
+                }elseif ($ext=='xls' || $ext=='xlsx') {
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: application/vnd.ms-excel");
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);
+                }elseif ($ext=='ppt' || $ext=='pptx') {
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: application/vnd.ms-powerpoint");
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);
+                }elseif ($ext=='csv') {
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: application/vnd.ms-excel");
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);
+                }elseif ($ext=='ods' || $ext=='odt' || $ext=='odp') {
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: application/vnd.oasis.opendocument.spreadsheet");
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);
+                }elseif ($ext=='rtf') {
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: application/rtf");
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);
+                }elseif ($ext=='sxc' || $ext=='sxi' || $ext=='txt') {
+                    header('Content-Length: '.filesize($path));
+                    header("Content-type: application/vnd.sun.xml.calc");
+                    header("Content-disposition: inline; filename=$filename");
+                    readfile($path);
+                }
             }
 
             public function deletepdf($filename){

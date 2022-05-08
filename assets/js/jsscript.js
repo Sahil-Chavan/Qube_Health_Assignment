@@ -79,7 +79,7 @@ function ajax_master(){
 
     coderesult = window.confirmationResult
     coderesult.confirm(code).then(function(result) {
-        alert("Successfully registered");
+        // alert("Successfully registered");
         ajax_master()
     }).catch(function(error) {
         alert(error.message);
@@ -113,7 +113,7 @@ function ajax_user(){
 
     coderesult = window.confirmationResult
     coderesult.confirm(code).then(function(result) {
-        alert("Successfully registered");
+        // alert("Successfully registered");
         ajax_user()
     }).catch(function(error) {
         alert(error.message);
