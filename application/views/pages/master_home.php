@@ -65,11 +65,11 @@
                     <?php echo form_open('pages/master_newuser', array('onSubmit' => "codeverify()")) ?>
                     <div class="form-group row">
                         <label for="form-control-lg" class="fs-3">User's Name</label>
-                        <input type="text" class="form-control-lg" id="uname" name="uname" placeholder="Please enter your name here.">
+                        <input type="text" pattern="^[a-zA-Z0-9]+$" class="form-control-lg" id="uname" name="uname" placeholder="Please enter your name here. Special characters are not allowed.">
                     </div>
                     <div class="form-group row">
                         <label for="form-control-lg" class="fs-3">User's Contact Number</label>
-                        <input type="tel" minlength="10" maxlength="10" class="form-control-lg" id="ucontact" name="ucontact" placeholder="Enter the contact number for registration">
+                        <input type="tel" minlength="10" maxlength="10" class="form-control-lg" id="ucontact" name="ucontact" placeholder="Enter the 10 digit contact number for registration.">
                     </div>
 
 

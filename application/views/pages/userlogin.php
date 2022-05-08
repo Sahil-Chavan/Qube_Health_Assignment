@@ -14,7 +14,7 @@
 
         <div id="master_log">
           <div class="form-outline mb-4">
-            <input type="tel" minlength="10" maxlength="10" id='phoneno' name='phoneno' placeholder='9876543210' class="form-control form-control-lg m-2 p-2" required />
+            <input type="tel" minlength="10" maxlength="10" id='phoneno' name='phoneno' placeholder='Enter 10 digit contact number.' class="form-control form-control-lg m-2 p-2" required />
             <label class="form-label" for="form1Example13">Phone Number</label>
             <div id="recaptcha-container"></div>
           </div>
