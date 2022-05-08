@@ -4,10 +4,14 @@ This project is a simple web application that allows the registered users to upl
 
 # How to run the project
 1. First install the dependencies: PHP and XAMPP
-2. Either clone this repository or download it in zip format and extract the project folder.
+2. Either clone this repository using this command in gitBash <br>
+` git clone https://github.com/Sahil-Chavan/Qube_Health_Assignment.git ` <br>
+or download it in zip format and extract the project folder. <br>
+download link for zip folder: `https://github.com/Sahil-Chavan/Qube_Health_Assignment/archive/refs/heads/main.zip`
 3. The project folder should be located in 'htdocs' folder in 'xampp' directory.
 4. I have provided the SQL DB file in the folder 'database'. Import it using the Phpmyadmin console.
-5. Access the project through 'localhost' on browser, i.e access it using one of those links
+5. Open the XAPMM control panel and switch ON the Apache and MySQL service modules.
+6. Access the project through 'localhost' on browser, i.e access it using one of those links
 
 			i. http://localhost/Qube_Health_Assignment/
 			
@@ -25,7 +29,7 @@ Hence to access master dashboard, enter appropriate contact number (registered i
 ### 2. Register User
 Master has an authority to register new Users. One can do this by providing the name and contact number in the form provided in the dashboard. With valid data new user gets registered by storing its data onto an SQL database.
 
-## User Module
+## B) User Module
 ### 1. Login
 Here only the registered users have acces to user dashboard. One has to enter the registered contact number, verify the reCAPTCHA and ask for OTP. Only if the contact number exists in SQL table of registered users (maintained by Master), OTP is sent to the entered contact number and allowed to enter OTP. Input the correct OTP and the access to user dashboard is granted.
 
@@ -34,3 +38,17 @@ User has the ability to upload their documents using the form provided on the us
 
 ### 3. Document Table
 Document table showcase all the presently uploaded files of the user. It provides the functionality to either view or download the files and also allows to delete the files. 
+
+# Screenshots
+### These are some screenshots of the project
+
+<img src="assets/images/Screenshot (1982).png" alt="ScreenShot" width="1200"/>
+<img src="assets/images/Screenshot (1984).png" alt="ScreenShot" width="1200"/>
+<img src="assets/images/Screenshot (1988).png" alt="ScreenShot" width="1200"/>
+<img src="assets/images/Screenshot (1987).png" alt="ScreenShot" width="1200"/>
+<img src="assets/images/Screenshot (1985).png" alt="ScreenShot" width="1200"/>
+<img src="assets/images/Screenshot (1986).png" alt="ScreenShot" width="1200"/>
+<img src="assets/images/Screenshot (1981).png" alt="ScreenShot" width="1200"/>
+<img src="assets/images/otpss.jpeg" alt="ScreenShot" width="1200"/>
+
+
