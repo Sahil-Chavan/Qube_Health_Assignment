@@ -43,18 +43,25 @@ Document table showcase all the presently uploaded files of the user. It provide
 ### These are some screenshots of the project
 - Master login page.
 <img src="assets/images/Screenshot (1982).png" alt="ScreenShot" width="1200"/>
+
 - Scenario when incorrect OTP is entered.
 <img src="assets/images/Screenshot (1984).png" alt="ScreenShot" width="1200"/>
+
 - User login page. Scenario when unauthorized users are blocked. 
 <img src="assets/images/Screenshot (1988).png" alt="ScreenShot" width="1200"/>
+
 - OTP is sent when correct contact number is provided by authorized user.
 <img src="assets/images/Screenshot (1987).png" alt="ScreenShot" width="1200"/>
+
 - Registration form provided on master dashboard.
 <img src="assets/images/Screenshot (1985).png" alt="ScreenShot" width="1200"/>
+
 - Scenario when an new user is registered by providing appripriate and valid data.
 <img src="assets/images/Screenshot (1986).png" alt="ScreenShot" width="1200"/>
+
 - User dashboard providing the functionality to upload, view and delete user's files.
 <img src="assets/images/Screenshot (1981).png" alt="ScreenShot" width="1200"/>
+
 - OTP message recieved on cellphone.
 <img src="assets/images/otpss.jpeg" alt="ScreenShot" width="1200"/>
 
