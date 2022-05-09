@@ -1,6 +1,6 @@
 # Qube_Health_Assignment
 This is the implementation to the assignment provided by Qube Health.
-This project is a simple web application that allows the registered users to upload and maintain their documents. The documents are stored in the database and can be accessed by the users anytime. Users can only be registered by the admin possessing the credintials of Master login. Diching the less secured password protection, here authentication is done using One Time Password sent to the User's or Admin's registered contact number.
+This project is a simple web application that allows the registered users to upload and maintain their documents. The documents are stored in the database and can be accessed by the users anytime. Users can only be registered by the admin possessing the credintials of Master login. Instead of using the less secured password protection, here authentication is done using One Time Password sent to the User's or Admin's registered contact number.
 
 # How to run the project
 1. First install the dependencies: PHP and XAMPP
