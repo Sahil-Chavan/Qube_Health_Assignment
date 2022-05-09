@@ -77,7 +77,9 @@
                             <tr>
                                 <th scope="row"><?php echo $n + 1; ?></th>
                                 <td><a href="<?= base_url('pages/viewpdf/'. $files[$n]) ?>"> <?php echo $files[$n] ?></a></td>
-                                <td><a href="<?= base_url('pages/deletepdf/'.$files[$n]) ?>"> Delete file </a> </td>
+                                <!-- <td><a href=""> Delete file </a> </td> -->
+                                <!-- <td><button type="button" class="btn btn-info">Info</button></td> -->
+                                <td><a href="<?= base_url('pages/deletepdf/'.$files[$n]) ?>" class="btn btn-info btn-sm active" role="button" aria-pressed="true">Delete File</a></td>
                             </tr>
                         <?php } ?>
 
